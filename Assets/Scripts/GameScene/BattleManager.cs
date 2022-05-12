@@ -73,6 +73,7 @@ public class BattleManager : MonoBehaviour
 
     void Clear()
     {
+        ProjectController.projectController.AddClearTimes();
         clearText.SetActive(true);
         clearFlag = true;
         ToHomeScene();

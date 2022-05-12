@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class CalculateController : MonoBehaviour
 {
+    public int basicPower;
+
     [SerializeField] GameObject[] attackTexts;
     [SerializeField] int[] attackPowers;
 
@@ -30,87 +32,93 @@ public class CalculateController : MonoBehaviour
                 {
                     case 2:
                     case 3: // ‘Šè‚É‹­‚¢‘®«‚Ìê‡
-                        attackPowers[0] += removeAmount * 100 * 2;
+                        attackPowers[dropID] += removeAmount * basicPower * 2;
                         break;
                     case 1:
                     case 4: // ‘Šè‚Éã‚¢‘®«‚Ìê‡
-                        attackPowers[0] += removeAmount * 100 / 2;
+                        attackPowers[dropID] += removeAmount * basicPower / 2;
                         break;
                     default:
-                        attackPowers[0] += removeAmount * 100;
+                        attackPowers[dropID] += removeAmount * basicPower;
                         break;
                 }
-                attackTexts[0].GetComponent<Text>().text = attackPowers[0].ToString("N0");
+                AddClearTimes(dropID);
                 break;
             case 1: // WaterDrop
                 switch (EnemyManager.enemyManager.attribute)
                 {
                     case 0:
                     case 4: // ‘Šè‚É‹­‚¢‘®«‚Ìê‡
-                        attackPowers[1] += removeAmount * 100 * 2;
+                        attackPowers[dropID] += removeAmount * basicPower * 2;
                         break;
                     case 2:
                     case 3: // ‘Šè‚Éã‚¢‘®«‚Ìê‡
-                        attackPowers[1] += removeAmount * 100 / 2;
+                        attackPowers[dropID] += removeAmount * basicPower / 2;
                         break;
                     default:
-                        attackPowers[1] += removeAmount * 100;
+                        attackPowers[dropID] += removeAmount * basicPower;
                         break;
                 }
-                attackTexts[1].GetComponent<Text>().text = attackPowers[1].ToString("N0");
+                AddClearTimes(dropID);
                 break;
             case 2: // WindDrop
                 switch (EnemyManager.enemyManager.attribute)
                 {
                     case 1:
                     case 4: // ‘Šè‚É‹­‚¢‘®«‚Ìê‡
-                        attackPowers[2] += removeAmount * 100 * 2;
+                        attackPowers[dropID] += removeAmount * basicPower * 2;
                         break;
                     case 0:
                     case 3: // ‘Šè‚Éã‚¢‘®«‚Ìê‡
-                        attackPowers[2] += removeAmount * 100 / 2;
+                        attackPowers[dropID] += removeAmount * basicPower / 2;
                         break;
                     default:
-                        attackPowers[2] += removeAmount * 100;
+                        attackPowers[dropID] += removeAmount * basicPower;
                         break;
                 }
-                attackTexts[2].GetComponent<Text>().text = attackPowers[2].ToString("N0");
+                AddClearTimes(dropID);
                 break;
             case 3: // ThunderDrop
                 switch (EnemyManager.enemyManager.attribute)
                 {
                     case 1:
                     case 2: // ‘Šè‚É‹­‚¢‘®«‚Ìê‡
-                        attackPowers[3] += removeAmount * 100 * 2;
+                        attackPowers[dropID] += removeAmount * basicPower * 2;
                         break;
                     case 0:
                     case 4: // ‘Šè‚Éã‚¢‘®«‚Ìê‡
-                        attackPowers[3] += removeAmount * 100 / 2;
+                        attackPowers[dropID] += removeAmount * basicPower / 2;
                         break;
                     default:
-                        attackPowers[3] += removeAmount * 100;
+                        attackPowers[dropID] += removeAmount * basicPower;
                         break;
                 }
-                attackTexts[3].GetComponent<Text>().text = attackPowers[3].ToString("N0");
+                AddClearTimes(dropID);
                 break;
             case 4: // SoilDrop
                 switch (EnemyManager.enemyManager.attribute)
                 {
                     case 0:
                     case 3: // ‘Šè‚É‹­‚¢‘®«‚Ìê‡
-                        attackPowers[4] += removeAmount * 100 * 2;
+                        attackPowers[dropID] += removeAmount * basicPower * 2;
                         break;
                     case 1:
                     case 2: // ‘Šè‚Éã‚¢‘®«‚Ìê‡
-                        attackPowers[4] += removeAmount * 100 / 2;
+                        attackPowers[dropID] += removeAmount * basicPower / 2;
                         break;
                     default:
-                        attackPowers[4] += removeAmount * 100;
+                        attackPowers[dropID] += removeAmount * basicPower;
                         break;
                 }
-                attackTexts[4].GetComponent<Text>().text = attackPowers[4].ToString("N0");
+                AddClearTimes(dropID);
                 break;
         }
+    }
+
+    void AddClearTimes(int attackPower)
+    {
+        attackPowers[attackPower] += ProjectController.projectController.clearTimes;
+        attackTexts[attackPower].GetComponent<Text>().text = attackPowers[attackPower].ToString("N0");
     }
 
     public void ResetAttackPower()

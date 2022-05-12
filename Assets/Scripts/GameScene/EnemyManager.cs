@@ -10,7 +10,8 @@ public class EnemyManager : MonoBehaviour
 {
     public int maxHp;
     public int currentHp;
-    public int attack;
+    public int minAttack;
+    public int maxAttack;
     [SerializeField] GameObject enemyHpSliderFill;
     [SerializeField] GameObject enemyAttribute;
     [Range(0,4)]
@@ -31,6 +32,7 @@ public class EnemyManager : MonoBehaviour
 
     public void Attack(PlayerManager player)
     {
+        int attack = Random.Range(minAttack, maxAttack);
         player.Damage(attack);
         transform.DOShakePosition(1f);
     }
