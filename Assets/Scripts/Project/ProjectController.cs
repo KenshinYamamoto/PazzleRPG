@@ -21,13 +21,13 @@ public class ProjectController : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        clearTimes = 1;
+    private void Start() {
+        clearTimes = PlayerPrefs.GetInt("ClearTimes");
     }
 
     public void AddClearTimes()
     {
         clearTimes++;
+        PlayerPrefs.SetInt("ClearTimes",clearTimes);
     }
 }

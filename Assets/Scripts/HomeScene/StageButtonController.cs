@@ -15,6 +15,7 @@ public class StageButtonController : MonoBehaviour
 
     public void OnStageButton()
     {
+        AudioManager.audioManager.PlaySE(AudioManager.SE.ButtonTap);
         ProjectController.projectController.stageNumber = buttonID;
         StartCoroutine(FadePanelController.fadePanelController.FadeOut());
     }

@@ -30,12 +30,13 @@ public class ButtonController : MonoBehaviour
     private void Start()
     {
         stageNameText.text = stageNameDict[ProjectController.projectController.stageNumber];
-        addAttackPowerText.text = "‰ÁZUŒ‚—Í:" + ProjectController.projectController.clearTimes;
+        addAttackPowerText.text = "åŠ ç®—æ”»æ’ƒåŠ›:" + ProjectController.projectController.clearTimes;
         retireAttention.SetActive(false);
     }
 
     public void OnResetButton()
     {
+        AudioManager.audioManager.PlaySE(AudioManager.SE.ButtonTap);
         for(int i = 0;i < GameController.gameController.drops.Count / 2; i++)
         {
             Vector3 extraDropPosition = GameController.gameController.drops[i].transform.position;
@@ -46,6 +47,7 @@ public class ButtonController : MonoBehaviour
 
     public void OnMenuButton()
     {
+        AudioManager.audioManager.PlaySE(AudioManager.SE.ButtonTap);
         menuButtonPushCount++;
         switch(menuButtonPushCount % 2)
         {
@@ -61,6 +63,7 @@ public class ButtonController : MonoBehaviour
 
     public void OnBackButton()
     {
+        AudioManager.audioManager.PlaySE(AudioManager.SE.Back);
         menuButtonPushCount = 0;
         GameController.gameController.isOperateDrops = true;
         menuCanvas.SetActive(false);
@@ -68,6 +71,7 @@ public class ButtonController : MonoBehaviour
 
     public void OnRetireButton()
     {
+        AudioManager.audioManager.PlaySE(AudioManager.SE.ButtonTap);
         retireAttention.SetActive(true);
     }
 
@@ -78,11 +82,13 @@ public class ButtonController : MonoBehaviour
 
     public void OnYesButton()
     {
+        AudioManager.audioManager.PlaySE(AudioManager.SE.ButtonTap);
         ToHomeScene();
     }
 
     public void OnNoButton()
     {
+        AudioManager.audioManager.PlaySE(AudioManager.SE.Back);
         retireAttention.SetActive(false);
     }
 }

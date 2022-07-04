@@ -5,27 +5,23 @@ using UnityEngine;
 [CreateAssetMenu]
 public class ParamsSO : ScriptableObject
 {
-    [Header("ƒhƒƒbƒv‚ğ‘å‚«‚­‚·‚é‚»‚Ì‘å‚«‚³(ƒfƒtƒHƒ‹ƒg:0.9f)")]
+    [Header("ãƒ‰ãƒ­ãƒƒãƒ—ã‚’ã‚¿ãƒƒãƒã—ã¦ã„ã‚‹ã¨ãã®å¤§ãã•(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ:0.9f)")]
     public float touchDropSize;
 
-    [Header("ƒhƒƒbƒv‚ªÁ‚¦‚é”»’è‹——£(ƒfƒtƒHƒ‹ƒg:1f)")]
+    [Header("åˆ¤å®šã™ã‚‹ãƒ‰ãƒ­ãƒƒãƒ—ã®è·é›¢(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ:1f)")]
     public float dropRemoveDistance;
 
-    //ParamsSO‚ª•Û‘¶‚µ‚Ä‚ ‚éêŠ‚ÌƒpƒX
     public const string PATH = "ParamsSO";
 
-    //ParamsSO‚ÌÀ‘Ì
     private static ParamsSO _entity;
     public static ParamsSO Entity
     {
         get
         {
-            //‰ƒAƒNƒZƒX‚Éƒ[ƒh‚·‚é
             if (_entity == null)
             {
                 _entity = Resources.Load<ParamsSO>(PATH);
 
-                //ƒ[ƒho—ˆ‚È‚©‚Á‚½ê‡‚ÍƒGƒ‰[ƒƒO‚ğ•\¦
                 if (_entity == null)
                 {
                     Debug.LogError(PATH + " not found");

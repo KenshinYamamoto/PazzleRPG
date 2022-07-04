@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// ƒvƒŒƒCƒ„[‚ğŠÇ—‚·‚é
+// ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ç—ï¿½ï¿½ï¿½ï¿½ï¿½
 
 public class PlayerManager : MonoBehaviour
 {
@@ -31,6 +31,7 @@ public class PlayerManager : MonoBehaviour
 
     public void Damage(int damage)
     {
+        AudioManager.audioManager.PlaySE(AudioManager.SE.Damage);
         currentHp -= damage;
         PlayerHPBarController.playerHPBarController.UpdatePlayerHPBar(currentHp);
         PlayerFigureGenerator.playerFigureGenerator.GeneratePlayerFigure(damage);

@@ -22,7 +22,7 @@ public class EnemyGenerator : MonoBehaviour
     private void Start()
     {
         int stageEnemy = stageDict[ProjectController.projectController.stageNumber];
-        GameObject enemy = Instantiate(stageEnemys[stageEnemy], new Vector3(0, 3.11f, 0), Quaternion.identity);
+        GameObject enemy = Instantiate(stageEnemys[stageEnemy], (stageEnemys[stageEnemy].transform.position), Quaternion.identity);
         BattleManager.battleManager.enemy = enemy.GetComponent<EnemyManager>();
         FigureGenerator.figureGenerator.enemy = enemy;
     }

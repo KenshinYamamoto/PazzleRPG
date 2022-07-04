@@ -31,11 +31,11 @@ public class CalculateController : MonoBehaviour
                 switch (EnemyManager.enemyManager.attribute)
                 {
                     case 2:
-                    case 3: // ‘Šè‚É‹­‚¢‘®«‚Ìê‡
+                    case 3: // ï¿½ï¿½ï¿½ï¿½É‹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìê‡
                         attackPowers[dropID] += removeAmount * basicPower * 2;
                         break;
                     case 1:
-                    case 4: // ‘Šè‚Éã‚¢‘®«‚Ìê‡
+                    case 4: // ï¿½ï¿½ï¿½ï¿½Éã‚¢ï¿½ï¿½ï¿½ï¿½ï¿½Ìê‡
                         attackPowers[dropID] += removeAmount * basicPower / 2;
                         break;
                     default:
@@ -48,11 +48,11 @@ public class CalculateController : MonoBehaviour
                 switch (EnemyManager.enemyManager.attribute)
                 {
                     case 0:
-                    case 4: // ‘Šè‚É‹­‚¢‘®«‚Ìê‡
+                    case 4: // ï¿½ï¿½ï¿½ï¿½É‹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìê‡
                         attackPowers[dropID] += removeAmount * basicPower * 2;
                         break;
                     case 2:
-                    case 3: // ‘Šè‚Éã‚¢‘®«‚Ìê‡
+                    case 3: // ï¿½ï¿½ï¿½ï¿½Éã‚¢ï¿½ï¿½ï¿½ï¿½ï¿½Ìê‡
                         attackPowers[dropID] += removeAmount * basicPower / 2;
                         break;
                     default:
@@ -65,11 +65,11 @@ public class CalculateController : MonoBehaviour
                 switch (EnemyManager.enemyManager.attribute)
                 {
                     case 1:
-                    case 4: // ‘Šè‚É‹­‚¢‘®«‚Ìê‡
+                    case 4: // ï¿½ï¿½ï¿½ï¿½É‹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìê‡
                         attackPowers[dropID] += removeAmount * basicPower * 2;
                         break;
                     case 0:
-                    case 3: // ‘Šè‚Éã‚¢‘®«‚Ìê‡
+                    case 3: // ï¿½ï¿½ï¿½ï¿½Éã‚¢ï¿½ï¿½ï¿½ï¿½ï¿½Ìê‡
                         attackPowers[dropID] += removeAmount * basicPower / 2;
                         break;
                     default:
@@ -82,11 +82,11 @@ public class CalculateController : MonoBehaviour
                 switch (EnemyManager.enemyManager.attribute)
                 {
                     case 1:
-                    case 2: // ‘Šè‚É‹­‚¢‘®«‚Ìê‡
+                    case 2: // ï¿½ï¿½ï¿½ï¿½É‹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìê‡
                         attackPowers[dropID] += removeAmount * basicPower * 2;
                         break;
                     case 0:
-                    case 4: // ‘Šè‚Éã‚¢‘®«‚Ìê‡
+                    case 4: // ï¿½ï¿½ï¿½ï¿½Éã‚¢ï¿½ï¿½ï¿½ï¿½ï¿½Ìê‡
                         attackPowers[dropID] += removeAmount * basicPower / 2;
                         break;
                     default:
@@ -99,11 +99,11 @@ public class CalculateController : MonoBehaviour
                 switch (EnemyManager.enemyManager.attribute)
                 {
                     case 0:
-                    case 3: // ‘Šè‚É‹­‚¢‘®«‚Ìê‡
+                    case 3: // ï¿½ï¿½ï¿½ï¿½É‹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìê‡
                         attackPowers[dropID] += removeAmount * basicPower * 2;
                         break;
                     case 1:
-                    case 2: // ‘Šè‚Éã‚¢‘®«‚Ìê‡
+                    case 2: // ï¿½ï¿½ï¿½ï¿½Éã‚¢ï¿½ï¿½ï¿½ï¿½ï¿½Ìê‡
                         attackPowers[dropID] += removeAmount * basicPower / 2;
                         break;
                     default:
@@ -149,6 +149,14 @@ public class CalculateController : MonoBehaviour
                 FigureGenerator.figureGenerator.GenerateFigure(i,attackPowers[i]);
                 player.attack = attackPowers[i];
                 BattleManager.battleManager.PlayerAttack();
+                switch(i){
+                    case 0: AudioManager.audioManager.PlaySE(AudioManager.SE.FireAttack); break;
+                    case 1: AudioManager.audioManager.PlaySE(AudioManager.SE.WaterAttack); break;
+                    case 2: AudioManager.audioManager.PlaySE(AudioManager.SE.WindAttack); break;
+                    case 3: AudioManager.audioManager.PlaySE(AudioManager.SE.ThunderAttack); break;
+                    case 4: AudioManager.audioManager.PlaySE(AudioManager.SE.SoilAttack); break;
+                    default: break;
+                }
             }
         }
         ResetAttackPower();

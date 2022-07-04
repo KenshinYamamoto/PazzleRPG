@@ -8,10 +8,10 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] GameObject countdownText;
     [SerializeField] DropGanerator dropGenerator;
-    [SerializeField] List<DropController> removeDrops = new List<DropController>(); // íœ‚·‚éƒhƒƒbƒv‚ğ”cˆ¬‚·‚é
+    [SerializeField] List<DropController> removeDrops = new List<DropController>(); // ï¿½íœï¿½ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½bï¿½vï¿½ï¿½cï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     [SerializeField] GameObject menuButton;
     DropController currentDraggingDrop;
-    public List<DropController> drops = new List<DropController>(); // ”Õ–Ê‚É‚ ‚é‘S‚Ä‚Ìƒhƒƒbƒv‚ğ”cˆ¬‚·‚é
+    public List<DropController> drops = new List<DropController>(); // ï¿½Õ–Ê‚É‚ï¿½ï¿½ï¿½Sï¿½Ä‚Ìƒhï¿½ï¿½ï¿½bï¿½vï¿½ï¿½cï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public Transform dropParent;
     public string homeScene;
     public bool isOperateDrops = true;
@@ -27,10 +27,9 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(Screen.width);
-        Debug.Log(Screen.height);
         countdownText.SetActive(false);
         StartCoroutine(dropGenerator.Generate(45));
+        AudioManager.audioManager.PlayBGM(AudioManager.BGM.Game);
     }
 
     void Update()
@@ -79,10 +78,10 @@ public class GameController : MonoBehaviour
         {
             DropController drop = hit.collider.GetComponent<DropController>();
 
-            if (drop.id == currentDraggingDrop.id) // “¯‚¶í—Ş‚¾‚Á‚½‚ç
+            if (drop.id == currentDraggingDrop.id) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ş‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             {
                 float distance = Vector2.Distance(drop.transform.position, currentDraggingDrop.transform.position);
-                if (distance < ParamsSO.Entity.dropRemoveDistance) // ‹——£‚ª‹ß‚©‚Á‚½‚ç
+                if (distance < ParamsSO.Entity.dropRemoveDistance) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 {
                     AddRemoveDrop(drop);
                 }
@@ -99,6 +98,7 @@ public class GameController : MonoBehaviour
                 drops.Remove(removeDrops[i]);
                 Destroy(removeDrops[i].gameObject);
             }
+            AudioManager.audioManager.PlaySE(AudioManager.SE.CrashDrops);
             StartCoroutine(dropGenerator.Generate(removeDrops.Count));
             CalculateController.calculateController.Calculation(removeDrops[0].GetComponent<DropController>().id, removeDrops.Count);
         }
@@ -111,6 +111,7 @@ public class GameController : MonoBehaviour
         currentDraggingDrop = drop;
         if (!removeDrops.Contains(drop))
         {
+            AudioManager.audioManager.PlaySE(AudioManager.SE.DraggingDrops);
             drop.transform.localScale = Vector3.one * ParamsSO.Entity.touchDropSize;
             removeDrops.Add(drop);
             if(!isCalled && removeDrops.Count >= 3)

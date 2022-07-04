@@ -21,7 +21,6 @@ public class FadePanelController : MonoBehaviour
         {
             alfa -= 0.01f;
             fadePanel.color = new Color(0, 0, 0, alfa);
-            Debug.Log(fadePanel.color);
             yield return null;
         }
     }
@@ -32,7 +31,6 @@ public class FadePanelController : MonoBehaviour
         {
             alfa += 0.01f;
             fadePanel.color = new Color(0, 0, 0, alfa);
-            Debug.Log(fadePanel.color);
             yield return null;
         }
         StageButtonController.stageButtonController.ToGameScene();

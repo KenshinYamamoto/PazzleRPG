@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-// “G‚ğŠÇ—‚·‚é
-
 public class EnemyManager : MonoBehaviour
 {
     public int maxHp;
@@ -14,6 +12,7 @@ public class EnemyManager : MonoBehaviour
     public int maxAttack;
     [SerializeField] GameObject enemyHpSliderFill;
     [SerializeField] GameObject enemyAttribute;
+    
     [Range(0,4)]
     public int attribute;
 
@@ -53,23 +52,23 @@ public class EnemyManager : MonoBehaviour
     {
         switch (attribute)
         {
-            case 0: // ‰Î‘®«
+            case 0:
                 enemyHpSliderFill.GetComponent<Image>().color = Color.red;
                 enemyAttribute.GetComponent<SpriteRenderer>().color = Color.red;
                 break;
-            case 1: // …‘®«
+            case 1: 
                 enemyHpSliderFill.GetComponent<Image>().color = Color.blue;
                 enemyAttribute.GetComponent<SpriteRenderer>().color = Color.blue;
                 break;
-            case 2: // •—‘®«
+            case 2: 
                 enemyHpSliderFill.GetComponent<Image>().color = Color.green;
                 enemyAttribute.GetComponent<SpriteRenderer>().color = Color.green;
                 break;
-            case 3: // —‹‘®«
+            case 3: 
                 enemyHpSliderFill.GetComponent<Image>().color = Color.yellow;
                 enemyAttribute.GetComponent<SpriteRenderer>().color = Color.yellow;
                 break;
-            case 4: // “y‘®«
+            case 4: 
                 enemyHpSliderFill.GetComponent<Image>().color = new Color(0.8156863f, 0.3098039f,0f,1f);
                 enemyAttribute.GetComponent<SpriteRenderer>().color = new Color(0.8156863f, 0.3098039f, 0f, 1f);
                 break;

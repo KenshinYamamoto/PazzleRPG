@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// í‚¢‚ğŠÇ—‚·‚é
-// Player‚ÆEnemy‚ğí‚í‚¹‚é
+// ï¿½í‚¢ï¿½ï¿½ï¿½Ç—ï¿½ï¿½ï¿½ï¿½ï¿½
+// Playerï¿½ï¿½Enemyï¿½ï¿½ï¿½í‚¹ï¿½ï¿½
 
 public class BattleManager : MonoBehaviour
 {
-    // Player‚ğæ“¾‚·‚é
+    // Playerï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½
     public PlayerManager player;
-    // Enemy‚ğæ“¾‚·‚é
+    // Enemyï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½
     public EnemyManager enemy;
 
     [SerializeField] GameObject enemyHpBar;
@@ -28,7 +28,7 @@ public class BattleManager : MonoBehaviour
     {
     }
 
-    // Player‚ªEnemy‚ÉUŒ‚‚·‚é
+    // Playerï¿½ï¿½Enemyï¿½ÉUï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public void PlayerAttack()
     {
         if (gameOverFlag)
@@ -36,7 +36,7 @@ public class BattleManager : MonoBehaviour
             return;
         }
 
-        player.Attack(enemy); // Player‚ªEnemy‚ÉUŒ‚‚·‚é
+        player.Attack(enemy); // Playerï¿½ï¿½Enemyï¿½ÉUï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
         if (enemy.currentHp <= 0)
         {
@@ -44,14 +44,14 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    // Enemy‚ªPlayer‚ÉUŒ‚‚·‚é
+    // Enemyï¿½ï¿½Playerï¿½ÉUï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public void EnemyAttack()
     {
         if (clearFlag)
         {
             return;
         }
-        enemy.Attack(player); // Enemy‚ªPlayer‚ÉUŒ‚‚·‚é
+        enemy.Attack(player); // Enemyï¿½ï¿½Playerï¿½ÉUï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
         if (player.currentHp <= 0)
         {
@@ -73,6 +73,7 @@ public class BattleManager : MonoBehaviour
 
     void Clear()
     {
+        AudioManager.audioManager.PlaySE(AudioManager.SE.Clear);
         ProjectController.projectController.AddClearTimes();
         clearText.SetActive(true);
         clearFlag = true;
@@ -81,6 +82,7 @@ public class BattleManager : MonoBehaviour
 
     void GameOver()
     {
+        AudioManager.audioManager.PlaySE(AudioManager.SE.Gameover);
         gameOverText.SetActive(true);
         GameController.gameController.gameOver = true;
         ToHomeScene();
