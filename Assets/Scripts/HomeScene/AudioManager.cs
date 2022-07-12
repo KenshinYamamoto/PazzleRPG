@@ -101,7 +101,7 @@ public class AudioManager : MonoBehaviour
         }
 
         int index = (int)se;
-        BGMAudioSource.PlayOneShot(SEAudioClips[index]);
+        SEAudioSource.PlayOneShot(SEAudioClips[index]);
     }
 
     bool CheckIsExists(){
